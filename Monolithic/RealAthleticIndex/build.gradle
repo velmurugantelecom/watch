@@ -1,0 +1,72 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.4.RELEASE")
+        classpath "com.gradle:build-scan-plugin:2.3"
+       // classpath 'io.freefair.gradle:lombok-plugin:3.8.4'
+      
+    }
+  
+}
+
+
+plugins {
+    id 'org.springframework.boot' version '2.1.4.RELEASE'
+    id 'java'
+    id 'eclipse'
+    id 'maven'
+    id 'com.gradle.build-scan' version '2.3'
+    id 'io.spring.dependency-management' version '1.0.7.RELEASE'
+    id "io.franzbecker.gradle-lombok" version "3.2.0"
+    
+
+}
+repositories {
+	jcenter()
+    mavenLocal()
+   // mavenCentral()
+    //maven {  url "https://plugins.gradle.org/m2/"}
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+springBoot {
+	mainClassName = 'com.real.athletic.index.RealAthleticIndex'
+	buildInfo()
+}
+
+
+
+dependencies {    
+
+	compile 'com.google.code.gson:gson:2.8.5'
+    compile 'org.springframework.boot:spring-boot-dependencies:2.1.4.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile ('org.springframework.boot:spring-boot-starter-data-jpa:2.1.4.RELEASE')
+    compile ('org.postgresql:postgresql:9.4-1200-jdbc41'){
+    exclude group: 'org.slf4j', module: 'slf4j-simple' }
+    compile 'commons-lang:commons-lang:2.6'
+    compile 'commons-collections:commons-collections:3.2.1'
+	compile ('org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.0') {
+    	exclude group: 'org.slf4j'
+	}
+    compile 'org.bouncycastle:bcpkix-jdk15on:1.50'
+	compile 'javax.inject:javax.inject:1'
+	// https://mvnrepository.com/artifact/org.passay/passay
+	compile group: 'org.passay', name: 'passay', version: '1.2.0'
+	
+   
+    // Use JUnit test framework
+    testImplementation 'junit:junit:4.12'
+
+ } 
+ 
+ 
+
+ 
+
+
